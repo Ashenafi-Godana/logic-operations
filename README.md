@@ -1,48 +1,65 @@
-# Truth Table Generator
+# Propositional Logic Toolkit
 
-This Python script generates a truth table for a given logical expression using up to four variables (p, q, r, and s). It evaluates the expression for all possible combinations of truth values for the variables and displays the truth table along with minterms and maxterms.
+This toolkit provides functionality for working with propositional logic expressions, including generating truth tables, extracting minterms and maxterms, and checking properties such as tautology and contradiction.
 
-## Logical Operators
+Example 1
+![alt text](images/img1.png)
 
-The following logical operators are implemented:
+Example 2
+![alt text](images/img2.png)
 
-- Negation (NOT)
-- Conjunction (AND)
-- Disjunction (OR)
-- Exclusive OR (XOR)
-- Implication (→)
-- Biconditional (↔)
+Example 3
+![alt text](images/img3.png)
+
+## Modules
+
+### 1. main.py
+
+This module serves as the entry point for the toolkit. It prompts users to input a logical expression and then generates its truth table, extracts minterms and maxterms, and checks whether the expression is a tautology or a contradiction.
+
+### 2. expressions.py
+
+This module contains functions for evaluating logical expressions and implementing logical operators. The functions include:
+
+- `negation(p)`: Evaluates the negation of a proposition.
+- `conjunction(p, q)`: Evaluates the conjunction (AND) of two propositions.
+- `disjunction(p, q)`: Evaluates the disjunction (OR) of two propositions.
+- `xor(p, q)`: Evaluates the exclusive OR (XOR) of two propositions.
+- `implication(p, q)`: Evaluates the implication (→) from one proposition to another.
+- `biconditional(p, q)`: Evaluates the biconditional (↔) between two propositions.
+- `precedence(operator)`: Determines the precedence of logical operators.
+- `shunting_yard(expression)`: Converts infix logical expressions to postfix notation using the shunting-yard algorithm.
+- `evaluate_postfix(expression, assignment)`: Evaluates a postfix logical expression given variable assignments.
+- `evaluate_expression(expression, assignment)`: Evaluates an infix logical expression given variable assignments.
+
+### 3. generate_terms.py
+
+This module contains functions for generating Sum of Products (SOP) and Product of Sums (POS) terms from a truth table. The functions include:
+
+- `generate_sop(truth_table, variables)`: Generates SOP terms from a truth table.
+- `generate_pos(truth_table, variables)`: Generates POS terms from a truth table.
+
+### 4. check_property.py
+
+This module contains a function for checking whether a given logical expression is a tautology, a contradiction, or neither. The function includes:
+
+- `check_property(expression, variables)`: Checks if the expression is a tautology, a contradiction, or neither, by evaluating it for all possible truth value assignments to its variables.
 
 ## Usage
 
-To generate truth tables for logical operators, you can use the `truth_table()` function provided in `logical_operators.py`. Additionally, the `minterms_maxterms()` function can be used to extract Minterms (SOP) and Maxterms (POS) from the truth tables.
+To use the toolkit, follow these steps:
 
-Example usage:
+1. Run `main.py`.
+2. Enter a logical expression when prompted.
+3. The toolkit will generate the truth table, extract minterms and maxterms, and check if the expression is a tautology or a contradiction.
 
-````python
-from logical_operators import truth_table, minterms_maxterms
+## Supported Operators
 
+The toolkit supports the following logical operators:
 
-## Usage
-
-1. Run the script using Python 3.
-2. Input the logical expression using variables p, q, r, and/or s. For example:
-    ```
-    Enter expression using variables (e.g., 'p and q'): p and q or (not r) -> s
-    ```
-3. The script will generate the truth table for the expression and display it.
-4. It will also calculate and print the minterms (SOP) and maxterms (POS) for the expression.
-
-## Features
-
-- Supports logical operators: and, or, not, -> (implication), <-> (biconditional)
-- Generates truth tables for expressions using up to four variables
-- Calculates minterms (SOP) and maxterms (POS)
-
-## Requirements
-
-- Python 3.x
-
-## Example
-
-````
+- Negation: `~`
+- Conjunction: `&`
+- Disjunction: `|`
+- Exclusive OR: `^`
+- Implication: `->`
+- Biconditional: `<->`

@@ -3,33 +3,15 @@ from expressions import *
 from check_property import check_property
 from generate_terms import generate_sop, generate_pos
 
-
 def generate_truth_table(expression, variables):
     truth_table = {}
     num_variables = len(variables)
+    
     for i in range(2 ** num_variables):
         assignment = {variables[j]: bool((i >> (num_variables - 1 - j)) & 1) for j in range(num_variables)}
         result = evaluate_expression(expression, assignment)
         truth_table[tuple(assignment.items())] = result
     return truth_table
-
-
-# def generate_truth_table_output(expression, truth_table, variables):
-#     header = "\t|\t".join(f"{var:^7}" for var in variables + [expression])
-#     print(header)
-#     print("=" * len(header)*4)
-#     for assignment, result in truth_table.items():
-#         assignment_str = "\t|\t".join(f"{str(value):^7}" for _, value in assignment)
-#         print(f"{assignment_str} | {result:^7}")
-
-# def generate_truth_table_output(expression, truth_table, variables):
-#     header = "\t|\t".join(f"{var:^7}" for var in variables + [expression])
-#     print(header)
-#     print("=" * len(header)*4)
-#     for assignment, result in truth_table.items():
-#         assignment_str = "\t|\t".join(f"{int(value):^7}" if isinstance(value, bool) else f"{value:^7}" for _, value in assignment)
-#         result_str = int(result)
-#         print(f"{assignment_str} | {result_str:^7}")
 
 
 def generate_truth_table_output(expression, truth_table, variables):
@@ -40,23 +22,26 @@ def generate_truth_table_output(expression, truth_table, variables):
     print("=" * line_length)
     for assignment, result in truth_table.items():
         assignment_str = "\t|\t".join(f"{str(value):^7}" if isinstance(value, bool) else f"{value!s:^7}" for _, value in assignment)
+        # result_str = int(result)
         result_str = "True" if result else "False"
         print(f"{assignment_str} | {result_str:^7}")
-
 
 
 def main():
     print('''
           
           This tool generates truth tables for propositional logic formulas. 
-          You can enter logical operators in several different formats using variables and supported operators 
+          It also checks if the formula is a tautology, contradiction, or neither.
+          It also generates the minterms (SOP) and maxterms (POS) of the formula.
+
+          You can enter logical operators using variables and supported operators 
           Supported Operators:
           negation: ~, conjunction: &, disjunction: |, exclusive OR: ^, implication: ->, biconditional: <->)
           
           ''')
     expression = input("Expression: ")
     variables = sorted(set(char for char in expression if char.isalpha()))  # Extract variables from the expression
-    truth_table = generate_truth_table(expression, variables)
+    truth_table = generate_truth_table(expression, variables)   # A dictionary containing the truth table will be returned
     
     print("\nTruth Table:")
     print()

@@ -18,14 +18,3 @@ def check_property(expression, variables):
         print(f"The expression '{expression}' is a contradiction.")
     else:
         print(f"The expression '{expression}' is neither a tautology nor a contradiction.")
-
-def main():
-    print("Enter a logical expression using variables and supported operators "
-          "(negation: ~ or not, conjunction: &, disjunction: |, exclusive OR: ^, implication: ->, biconditional: <->)")
-    expression = input("Expression: ")
-    variables = sorted(set(char for char in expression if char.isalpha()))  # Extract variables from the expression
-    check_property(expression, variables)
-
-
-if __name__ == "__main__":
-    main()

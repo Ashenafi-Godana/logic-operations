@@ -1,4 +1,4 @@
-# Propositional Logic Toolkit
+# Propositional Logic Calculator
 
 This toolkit provides functionality for working with propositional logic expressions, including generating truth tables, extracting minterms and maxterms, and checking properties such as tautology and contradiction.
 

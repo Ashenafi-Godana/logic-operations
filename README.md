@@ -47,7 +47,7 @@ This module contains a function for checking whether a given logical expression 
 
 ## Usage
 
-To use the toolkit, follow these steps:
+To use the program follow these steps:
 
 1. Run `main.py`.
 2. Enter a logical expression when prompted.
@@ -55,7 +55,7 @@ To use the toolkit, follow these steps:
 
 ## Supported Operators
 
-The toolkit supports the following logical operators:
+The program supports the following logical operators:
 
 - Negation: `~`
 - Conjunction: `&`
